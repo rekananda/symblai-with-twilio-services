@@ -1,14 +1,10 @@
-import express from 'express';
-import fetch from 'node-fetch';
-import { fileURLToPath } from 'url';
-import path from 'path';
-import twilio from 'twilio';
-import dotenv from 'dotenv';
-
+const express = require('express');
 const app = express();
-const AccessToken = twilio.jwt.AccessToken;
+const fetch = require('node-fetch');
+const path = require('path');
+const AccessToken = require('twilio').jwt.AccessToken;
 const VideoGrant = AccessToken.VideoGrant;
-dotenv.config();
+require('dotenv').config();
 
 const symblAppId = process.env.SYMBL_APP_ID;
 const symblAppSecret = process.env.SYMBL_APP_SECRET;
@@ -18,10 +14,6 @@ const MAX_ALLOWED_SESSION_DURATION = 14400;
 const twilioAccountSid = process.env.TWILIO_ACCOUNT_SID;
 const twilioApiKeySID = process.env.TWILIO_API_KEY_SID;
 const twilioApiKeySecret = process.env.TWILIO_API_KEY_SECRET;
-
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 app.use(express.static(path.join(__dirname, 'build')));
 
@@ -62,12 +54,6 @@ app.get('/symbl-token', async (req, res) => {
 
 app.get('/twilio-token', (req, res) => {
   const { identity, roomName } = req.query;
-
-  if (!identity || !roomName) {
-    // Handle the case where identity or roomName is missing
-    return res.status(400).json({ error: 'Both identity and roomName are required.' });
-  }
-  console.log({twilioAccountSid})
   const token = new AccessToken(twilioAccountSid, twilioApiKeySID, twilioApiKeySecret, {
     ttl: MAX_ALLOWED_SESSION_DURATION,
   });

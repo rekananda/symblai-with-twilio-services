@@ -1,20 +1,20 @@
 {
-  "type": "module",
-  "name": "symblai-with-twilio-services",
-  "version": "1.0.0",
-  "description": "BE SERVICE TOKENS",
-  "main": "app.js",
-  "author": "Rekananda",
-  "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "name": "symbl-twilio-video-react-service",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "dotenv": "^16.3.1",
-    "express": "^4.18.2",
-    "node-fetch": "^3.3.2",
-    "path": "^0.12.7",
-    "twilio": "^4.18.1"
+    "clsx": "^1.1.1",
+    "concurrently": "^5.1.0",
+    "d3-timer": "^1.0.10",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "fscreen": "^1.0.2",
+    "lodash-es": "^4.17.15",
+    "lodash.throttle": "^4.1.1",
+    "node-fetch": "^2.6.0",
+    "twilio": "^3.48.1"
+  },
+  "scripts": {
+    "start": "node server.js"
   }
 }
-
