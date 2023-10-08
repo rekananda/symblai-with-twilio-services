@@ -1,5 +1,4 @@
-const express = require('express');
-const app = express();
+const app = require('express')();
 const fetch = require('node-fetch');
 const path = require('path');
 const AccessToken = require('twilio').jwt.AccessToken;
@@ -67,3 +66,5 @@ app.get('/twilio-token', (req, res) => {
 app.get('*', (_, res) => res.sendFile(path.join(__dirname, 'build/index.html')));
 
 app.listen(8081, () => console.log('token server running on 8081'));
+
+module.exports = app;

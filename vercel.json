@@ -1,0 +1,11 @@
+
+{
+  "version": 2,
+  "name": "symbl-twilio-video-react-service",
+  "builds": [
+      { "src": "server.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/server.js" }
+  ]
+}
